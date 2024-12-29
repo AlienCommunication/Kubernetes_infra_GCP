@@ -4,19 +4,19 @@ provider "google" {
 }
 
 module "network" {
-  source        = "./network.tf"
+  source        = "./modules/network.tf"
 }
 
 module "gke" {
-  source        = "./gke.tf"
+  source        = "./modules/gke.tf"
   network       = module.network.network_name
   subnetwork    = module.network.subnetwork_name
 }
 
 module "storage" {
-  source        = "./storage.tf"
+  source        = "./modules/storage.tf"
 }
 
 module "service_account" {
-  source = "./service_account.tf"
+  source = "./modules/service_account.tf"
 }
