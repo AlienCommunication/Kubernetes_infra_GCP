@@ -17,6 +17,7 @@ module "gke" {
 
 module "storage" {
   source = "./modules/storage"
+  region = var.region
 }
 
 module "service_account" {
