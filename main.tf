@@ -4,17 +4,19 @@ provider "google" {
 }
 
 module "network" {
-  source        = "./modules/network"
+  source = "./modules/network"
 }
 
 module "gke" {
-  source        = "./modules/gke"
-  network       = module.network.network_name
-  subnetwork    = module.network.subnetwork_name
+  source       = "./modules/gke"
+  cluster_name = var.cluster_name
+  region       = var.region
+  network      = module.network.network_name
+  subnetwork   = module.network.subnetwork_name
 }
 
 module "storage" {
-  source        = "./modules/storage"
+  source = "./modules/storage"
 }
 
 module "service_account" {
